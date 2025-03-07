@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visualisations 3D pour Concours d'Architecture</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#2563eb',
+secondary: '#f59e0b'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+</style>
+</head>
+<body class="bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+<header class="relative overflow-hidden bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+<div class="relative z-10">
+<nav class="bg-gradient-to-b from-gray-900 to-gray-800 border-b border-gray-700">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex items-center">
+<span class="text-2xl font-['Pacifico'] text-primary">logo</span>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<a href="#standard" class="text-gray-300 hover:text-primary">Offre Standard</a>
+<a href="#express" class="text-gray-300 hover:text-primary">Offre Express</a>
+<a href="#portfolio" class="text-gray-300 hover:text-primary">Portfolio</a>
+<a href="#parrainage" class="text-gray-300 hover:text-primary">Parrainage</a>
+<button class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-primary/90">Contactez-nous</button>
+</div>
+</div>
+</div>
+</nav>
+</div>
+<div class="relative min-h-screen">
+<img src="https://public.readdy.ai/ai/img_res/bed5f8677cc83095a880cc11adb1e4a0.jpg" class="absolute inset-0 w-full h-full object-cover" alt="3D Visualization">
+<div class="absolute inset-0 bg-gradient-to-r from-gray-900/90 to-transparent">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10">
+<div class="max-w-2xl">
+<h1 class="text-6xl font-bold text-white mb-6">Visualisations 3D pour Concours d'Architecture</h1>
+<p class="text-xl text-gray-300 mb-8">Transformez votre projet en une image percutante pour convaincre le jury ! Nous réalisons des visualisations 3D haut de gamme, spécialement conçues pour les concours internationaux d'architecture.</p>
+<button class="bg-primary text-white px-8 py-3 !rounded-button hover:bg-primary/90 text-lg">Découvrir nos offres</button>
+</div>
+</div>
+</div>
+</div>
+</header>
+<section id="standard" class="py-20 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<h2 class="text-3xl font-bold text-center mb-12 text-white">📌 Offre Standard – Qualité & Prix Dégressif</h2>
+<div class="bg-gray-700 rounded-lg shadow-lg p-8">
+<div class="mb-8">
+<label class="block text-gray-300 mb-2">Nombre d'images souhaité:</label>
+<input type="range" min="1" max="10" value="1" class="w-full h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer" id="standardImageCount">
+<div class="flex justify-between text-gray-400 text-sm mt-1">
+<span>1</span>
+<span>2</span>
+<span>3</span>
+<span>4</span>
+<span>5</span>
+<span>6</span>
+<span>7</span>
+<span>8</span>
+<span>9</span>
+<span>10</span>
+</div>
+</div>
+<div class="bg-gray-800 rounded-lg p-6 mb-8">
+<div class="flex justify-between items-center mb-4">
+<div>
+<p class="text-gray-300">Nombre d'images sélectionné:</p>
+<p class="text-2xl font-bold text-white" id="selectedImageCount">1</p>
+</div>
+<div>
+<p class="text-gray-300">Prix unitaire:</p>
+<p class="text-2xl font-bold text-white" id="pricePerImage">1 000 €</p>
+</div>
+<div>
+<p class="text-gray-300">Prix total:</p>
+<p class="text-2xl font-bold text-primary" id="totalPrice">1 000 €</p>
+</div>
+</div>
+<div class="w-full bg-gray-600 h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full transition-all duration-300" id="priceBar" style="width: 16.66%"></div>
+</div>
+</div>
+<div class="mt-8 space-y-2">
+<p class="flex items-center text-gray-300"><i class="ri-check-line text-green-500 mr-2"></i>Haute qualité pour les concours internationaux</p>
+<p class="flex items-center text-gray-300"><i class="ri-check-line text-green-500 mr-2"></i>Prix dégressif pour inciter à commander plusieurs images</p>
+<p class="flex items-center text-gray-300"><i class="ri-check-line text-green-500 mr-2"></i>Retouches mineures incluses</p>
+<p class="flex items-center text-gray-300"><i class="ri-time-line text-green-500 mr-2"></i>Délai de livraison : 5 jours ouvrables</p>
+</div>
+<div class="mt-8 flex justify-between items-center">
+<button class="bg-primary text-white px-6 py-3 !rounded-button hover:bg-primary/90">Commander l'offre Standard</button>
+<p class="text-gray-400">Économie sur le prix unitaire: <span class="text-primary font-bold" id="savingsPercentage">0%</span></p>
+</div>
+</div>
+</div>
+<script>
+const standardPrices = {
+1: 1000,
+2: 950,
+3: 925,
+4: 900,
+5: 875,
+6: 850,
+7: 825,
+8: 800,
+9: 775,
+10: 750
+};
+const imageSlider = document.getElementById('standardImageCount');
+const selectedCount = document.getElementById('selectedImageCount');
+const pricePerImage = document.getElementById('pricePerImage');
+const totalPrice = document.getElementById('totalPrice');
+const priceBar = document.getElementById('priceBar');
+const savingsPercentage = document.getElementById('savingsPercentage');
+imageSlider.value = 2;
+const standardEvent = new Event('input');
+imageSlider.dispatchEvent(standardEvent);
+document.addEventListener('DOMContentLoaded', function() {
+imageSlider.dispatchEvent(standardEvent);
+});
+imageSlider.addEventListener('input', function() {
+const count = parseInt(this.value);
+const price = standardPrices[count];
+const total = price * count;
+const basePrice = standardPrices[1];
+const savings = ((basePrice - price) / basePrice * 100).toFixed(1);
+selectedCount.textContent = count;
+pricePerImage.textContent = price + ' €';
+totalPrice.textContent = total + ' €';
+priceBar.style.width = (count / 10 * 100) + '%';
+savingsPercentage.textContent = savings + '%';
+});
+</script>
+</section>
+<section id="express" class="py-20 bg-gradient-to-b from-gray-800 via-gray-900 to-gray-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<h2 class="text-3xl font-bold text-center mb-12 text-white">⚡ Offre Express – Pour les Urgences de Concours</h2>
+<div class="bg-gray-700 rounded-lg shadow-lg p-8">
+<p class="text-lg text-gray-400 mb-8">Deadline serrée ? Pas de souci ! Avec notre option Express (+20% sur le prix standard), nous adaptons notre planning et travaillons même de nuit pour accélérer la production. Laissons simplement à nos ordinateurs le temps nécessaire pour générer les rendus. Parce que oui, même en urgence, l'excellence reste notre priorité !</p>
+<div class="mb-8">
+<label class="block text-gray-300 mb-2">Nombre d'images souhaité:</label>
+<input type="range" min="1" max="10" value="1" class="w-full h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer" id="expressImageCount">
+<div class="flex justify-between text-gray-400 text-sm mt-1">
+<span>1</span>
+<span>2</span>
+<span>3</span>
+<span>4</span>
+<span>5</span>
+<span>6</span>
+<span>7</span>
+<span>8</span>
+<span>9</span>
+<span>10</span>
+</div>
+</div>
+<div class="bg-gray-800 rounded-lg p-6 mb-8">
+<div class="grid grid-cols-2 gap-6 mb-6">
+<div class="bg-gray-700/50 p-4 rounded-lg">
+<div class="flex justify-between items-center">
+<div>
+<p class="text-gray-400">Prix Standard</p>
+<p class="text-xl text-gray-300" id="standardPriceComparison">1 000 €</p>
+</div>
+<i class="ri-arrow-right-line text-2xl text-gray-500"></i>
+</div>
+</div>
+<div class="bg-gray-700/50 p-4 rounded-lg">
+<div class="flex justify-between items-center">
+<div>
+<p class="text-gray-400">Prix Express</p>
+<p class="text-xl text-secondary" id="expressPriceComparison">1 300 €</p>
+</div>
+<span class="text-secondary text-sm">+20%</span>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-center mb-4">
+<div>
+<p class="text-gray-300">Nombre d'images:</p>
+<p class="text-2xl font-bold text-white" id="expressSelectedCount">1</p>
+</div>
+<div>
+<p class="text-gray-300">Prix unitaire:</p>
+<p class="text-2xl font-bold text-white" id="expressPricePerImage">1 300 €</p>
+</div>
+<div>
+<p class="text-gray-300">Total:</p>
+<p class="text-2xl font-bold text-secondary" id="expressTotalPrice">1 300 €</p>
+</div>
+</div>
+<div class="w-full bg-gray-600 h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full transition-all duration-300" id="expressBar" style="width: 16.66%"></div>
+</div>
+</div>
+<div class="mt-8 space-y-2">
+<p class="flex items-center text-gray-300"><i class="ri-check-line text-green-500 mr-2"></i>Livraison accélérée garantie</p>
+<p class="flex items-center text-gray-300"><i class="ri-check-line text-green-500 mr-2"></i>Même qualité, en un temps record</p>
+<p class="flex items-center text-gray-300"><i class="ri-check-line text-green-500 mr-2"></i>Délai de livraison réduit de 50%</p>
+</div>
+<div class="mt-8 flex justify-between items-center">
+<button class="bg-secondary text-white px-6 py-3 !rounded-button hover:bg-secondary/90">Commander l'offre Express</button>
+<div class="text-right">
+<p class="text-gray-400">Délai de livraison standard: <span class="line-through">5 jours ouvrables</span></p>
+<p class="text-secondary font-bold">Délai Express: 2-3 jours</p>
+</div>
+</div>
+</div>
+</div>
+<script>
+const expressPrices = {
+1: 1200,
+2: 1140,
+3: 1110,
+4: 1080,
+5: 1050,
+6: 1020,
+7: 990,
+8: 960,
+9: 930,
+10: 900
+};
+function calculateExpressPrice(standardPrice) {
+return Math.round(standardPrice * 1.2);
+}
+Object.keys(standardPrices).forEach(key => {
+expressPrices[key] = calculateExpressPrice(standardPrices[key]);
+});
+const expressSlider = document.getElementById('expressImageCount');
+const expressCount = document.getElementById('expressSelectedCount');
+const expressPricePerImage = document.getElementById('expressPricePerImage');
+const expressTotalPrice = document.getElementById('expressTotalPrice');
+const expressBar = document.getElementById('expressBar');
+const standardPriceComp = document.getElementById('standardPriceComparison');
+const expressPriceComp = document.getElementById('expressPriceComparison');
+expressSlider.value = 2;
+const expressEvent = new Event('input');
+expressSlider.dispatchEvent(expressEvent);
+document.addEventListener('DOMContentLoaded', function() {
+expressSlider.dispatchEvent(expressEvent);
+});
+expressSlider.addEventListener('input', function() {
+const count = parseInt(this.value);
+const standardPrice = standardPrices[count];
+const expressPrice = calculateExpressPrice(standardPrice);
+const total = expressPrice * count;
+expressCount.textContent = count;
+expressPricePerImage.textContent = expressPrice + ' €';
+expressTotalPrice.textContent = total + ' €';
+expressBar.style.width = (count / 10 * 100) + '%';
+standardPriceComp.textContent = standardPrice + ' €';
+expressPriceComp.textContent = expressPrice + ' €';
+});
+</script>
+</section>
+<section id="portfolio" class="py-20 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<h2 class="text-3xl font-bold text-center mb-12 text-white">🎨 Nos Réalisations</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="group relative overflow-hidden rounded-lg">
+<img src="https://public.readdy.ai/ai/img_res/18bb47c4f77a4e2d56c2f4bc43479254.jpg" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" alt="Musée contemporain">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="absolute bottom-0 p-6">
+<h3 class="text-xl font-bold text-white">Musée d'Art Contemporain</h3>
+<p class="text-gray-200">Concours International 2024</p>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-lg">
+<img src="https://public.readdy.ai/ai/img_res/1a5ec9f2eeb599ec78aff122bd6383fc.jpg" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" alt="Tour résidentielle">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="absolute bottom-0 p-6">
+<h3 class="text-xl font-bold text-white">Tour Résidentielle Horizon</h3>
+<p class="text-gray-200">Dubai, 2024</p>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-lg">
+<img src="https://public.readdy.ai/ai/img_res/e8a4f38bef83009e3671c5b88bdcc191.jpg" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" alt="Immeuble de bureaux">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="absolute bottom-0 p-6">
+<h3 class="text-xl font-bold text-white">Campus Écologique</h3>
+<p class="text-gray-200">Paris, 2024</p>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-lg">
+<img src="https://public.readdy.ai/ai/img_res/58b985cbf0332931ffc7e8f7b6f00786.jpg" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" alt="Centre culturel">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="absolute bottom-0 p-6">
+<h3 class="text-xl font-bold text-white">Centre Culturel Luminescence</h3>
+<p class="text-gray-200">Lyon, 2024</p>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-lg">
+<img src="https://public.readdy.ai/ai/img_res/d49a3a06bb56b10d5fa9ab13eb26a8d9.jpg" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" alt="Resort hôtelier">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="absolute bottom-0 p-6">
+<h3 class="text-xl font-bold text-white">Resort Infinity Bay</h3>
+<p class="text-gray-200">Cannes, 2024</p>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-lg">
+<img src="https://public.readdy.ai/ai/img_res/1d6b1c5a11d6532eb123d0270c7cc063.jpg" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" alt="Gare moderne">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="absolute bottom-0 p-6">
+<h3 class="text-xl font-bold text-white">Gare TGV Confluence</h3>
+<p class="text-gray-200">Bordeaux, 2024</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 text-center">
+<a href="https://readdy.ai/home/c1cf1a88-664b-4376-8992-df1b708e9f57/a8867e07-daa8-4e7c-bab1-6d177bee7203" data-readdy="true" class="inline-block bg-primary text-white px-8 py-3 !rounded-button hover:bg-primary/90">Voir plus de réalisations</a>
+</div>
+</div>
+</section>
+<section id="parrainage" class="py-20 bg-gradient-to-b from-gray-800 via-gray-900 to-gray-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<h2 class="text-3xl font-bold text-center mb-12 text-white">🤝 Programme de Parrainage – Simulez vos économies</h2>
+<div class="bg-gray-700 rounded-lg shadow-lg p-8">
+<div class="mb-8">
+<label class="block text-gray-300 mb-2">Nombre d'images commandées par votre filleul:</label>
+<input type="range" min="1" max="5" value="1" class="w-full h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer" id="referralImageCount">
+<div class="flex justify-between text-gray-400 text-sm mt-1">
+<span>1</span>
+<span>2</span>
+<span>3</span>
+<span>4</span>
+<span>5</span>
+</div>
+</div>
+<div class="bg-gray-800 rounded-lg p-6 mb-8">
+<div class="grid grid-cols-2 gap-6 mb-6">
+<div class="bg-gray-700/50 p-4 rounded-lg">
+<p class="text-gray-400">Commande du filleul</p>
+<div class="flex items-center gap-2">
+<p class="text-xl text-white" id="referralOrderAmount">1 000 €</p>
+<span class="text-sm text-secondary">(-5%)</span>
+</div>
+<p class="text-sm text-gray-400 mt-1">Prix après réduction: <span id="referralDiscountedAmount">950 €</span></p>
+</div>
+<div class="bg-gray-700/50 p-4 rounded-lg">
+<p class="text-gray-400">Votre bon de réduction</p>
+<p class="text-xl text-secondary" id="referralDiscount">100 €</p>
+</div>
+</div>
+<div class="w-full bg-gray-600 h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full transition-all duration-300" id="referralBar" style="width: 20%"></div>
+</div>
+<p class="text-sm text-gray-400 mt-2">Réduction maximale: 500 €</p>
+</div>
+<div class="space-y-6">
+<h3 class="text-xl font-semibold text-white">Comment ça marche ?</h3>
+<div class="space-y-4">
+<div class="flex items-center">
+<i class="ri-user-add-line text-2xl text-primary mr-3"></i>
+<span class="text-gray-300">Parrainez vos contacts* : architectes, agents immobiliers, investisseurs, promoteurs, décorateurs d'intérieur, bureaux d'études...</span>
+</div>
+<div class="flex items-center">
+<i class="ri-gift-line text-2xl text-primary mr-3"></i>
+<span class="text-gray-300">Ils bénéficient de 5% de réduction sur leur commande</span>
+</div>
+<div class="flex items-center">
+<i class="ri-money-euro-circle-line text-2xl text-primary mr-3"></i>
+<span class="text-gray-300">Vous recevez un bon de réduction de 100€ par image commandée par votre filleul** (jusqu'à 500€ maximum par commande)</span>
+</div>
+<div class="flex items-center">
+<i class="ri-stack-line text-2xl text-primary mr-3"></i>
+<span class="text-gray-300">Les réductions sont cumulables, mais dans une limite de 500€ par commande</span>
+</div>
+<p class="text-sm italic text-primary mt-4">* Pour valider le parrainage, votre filleul doit indiquer votre nom ou celui de votre société lors de sa commande. Elle doit être réalisée et intégralement réglée pour être validée.</p>
+<p class="text-sm italic text-primary">** Les bons de réduction pour le parrain ne sont comptabilisés que pour la première commande du filleul</p>
+</div>
+</div>
+</div>
+</div>
+<script>
+const referralSlider = document.getElementById('referralImageCount');
+const referralOrderAmount = document.getElementById('referralOrderAmount');
+const referralDiscount = document.getElementById('referralDiscount');
+const referralBar = document.getElementById('referralBar');
+referralSlider.value = 2;
+const referralEvent = new Event('input');
+referralSlider.dispatchEvent(referralEvent);
+document.addEventListener('DOMContentLoaded', function() {
+referralSlider.dispatchEvent(referralEvent);
+});
+function calculateReferralDiscount(imageCount) {
+const basePrice = standardPrices[imageCount];
+const orderTotal = basePrice * imageCount;
+const discountedAmount = orderTotal * 0.95;
+const discount = Math.min(imageCount * 100, 500);
+return {orderTotal, discountedAmount, discount};
+}
+referralSlider.addEventListener('input', function() {
+const count = parseInt(this.value);
+const {orderTotal, discountedAmount, discount} = calculateReferralDiscount(count);
+referralOrderAmount.textContent = orderTotal + ' €';
+referralDiscountedAmount.textContent = discountedAmount + ' €';
+referralDiscount.textContent = discount + ' €';
+referralBar.style.width = (discount / 500 * 100) + '%';
+});
+document.querySelector('form').addEventListener('submit', function(e) {
+e.preventDefault();
+const email = this.querySelector('input[type="email"]').value;
+if(email) {
+const notification = document.createElement('div');
+notification.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg';
+notification.textContent = 'Invitation envoyée avec succès !';
+document.body.appendChild(notification);
+setTimeout(() => notification.remove(), 3000);
+this.reset();
+}
+});
+</script>
+</section>
+<footer class="bg-gradient-to-b from-gray-900 to-gray-950 text-white py-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid md:grid-cols-4 gap-8">
+<div>
+<h3 class="text-xl font-bold mb-4">À propos</h3>
+<p class="text-gray-400">Spécialistes en visualisation 3D pour l'architecture depuis 2010.</p>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-4">Contact</h3>
+<ul class="space-y-2 text-gray-400">
+<li>📞 +33 1 23 45 67 89</li>
+<li>📧 contact@3dviz.fr</li>
+<li>📍 Paris, France</li>
+</ul>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-4">Liens rapides</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white">Offre Standard</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Offre Express</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Portfolio</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Programme de Parrainage</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-4">Suivez-nous</h3>
+<div class="flex space-x-4">
+<a href="#" class="text-gray-400 hover:text-white"><i class="ri-facebook-fill ri-lg"></i></a>
+<a href="#" class="text-gray-400 hover:text-white"><i class="ri-twitter-fill ri-lg"></i></a>
+<a href="#" class="text-gray-400 hover:text-white"><i class="ri-instagram-fill ri-lg"></i></a>
+<a href="#" class="text-gray-400 hover:text-white"><i class="ri-linkedin-fill ri-lg"></i></a>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400">
+<p>© 2025 3D Visualisation. Tous droits réservés.</p>
+</div>
+</div>
+</footer>
+</div>
+</body>
+</html>
