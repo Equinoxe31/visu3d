@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio - Visualisations 3D Architecture</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#2563eb',
+secondary: '#f59e0b'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+.modal {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.8);
+z-index: 1000;
+}
+.modal.active {
+display: flex;
+}
+</style>
+</head>
+<body class="bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 min-h-screen">
+<nav class="bg-gradient-to-b from-gray-900 to-gray-800 border-b border-gray-700 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex items-center">
+<span class="text-2xl font-['Pacifico'] text-primary">logo</span>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<a href="https://readdy.ai/home/c1cf1a88-664b-4376-8992-df1b708e9f57/e842d8bb-178d-4fa3-921a-4b150d872d28" data-readdy="true" class="text-gray-300 hover:text-primary">Accueil</a>
+<a href="#" class="text-gray-300 hover:text-primary">Offre Standard</a>
+<a href="#" class="text-gray-300 hover:text-primary">Offre Express</a>
+<a href="#" class="text-primary">Portfolio</a>
+<button class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-primary/90">Contactez-nous</button>
+</div>
+</div>
+</div>
+</nav>
+<div class="bg-gray-900 py-4">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center text-sm text-gray-400">
+<a href="https://readdy.ai/home/c1cf1a88-664b-4376-8992-df1b708e9f57/e842d8bb-178d-4fa3-921a-4b150d872d28" data-readdy="true" class="hover:text-primary">Accueil</a>
+<span class="mx-2">/</span>
+<span class="text-primary">Portfolio</span>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="flex flex-wrap gap-4 mb-8">
+<button class="filter-btn bg-gray-700 text-white px-4 py-2 !rounded-full hover:bg-primary active" data-category="tous">Tous les projets</button>
+<button class="filter-btn bg-gray-700 text-white px-4 py-2 !rounded-full hover:bg-primary" data-category="musees">Musées</button>
+<button class="filter-btn bg-gray-700 text-white px-4 py-2 !rounded-full hover:bg-primary" data-category="tours">Tours</button>
+<button class="filter-btn bg-gray-700 text-white px-4 py-2 !rounded-full hover:bg-primary" data-category="bureaux">Bureaux</button>
+<button class="filter-btn bg-gray-700 text-white px-4 py-2 !rounded-full hover:bg-primary" data-category="culturel">Centres Culturels</button>
+<button class="filter-btn bg-gray-700 text-white px-4 py-2 !rounded-full hover:bg-primary" data-category="residentiel">Résidentiel</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
+<div class="group relative overflow-hidden rounded-lg cursor-pointer" data-category="musees">
+<img src="https://public.readdy.ai/ai/img_res/6d8e8e6d1d8e496e62cdf560ffa4cf75.jpg" class="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-110" alt="Musée d'Art Contemporain">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="absolute bottom-0 p-6">
+<h3 class="text-xl font-bold text-white">Musée d'Art Contemporain</h3>
+<p class="text-gray-200">Paris, France</p>
+<span class="inline-block bg-primary/20 text-primary px-3 py-1 rounded-full text-sm mt-2">Musée</span>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-lg cursor-pointer" data-category="tours">
+<img src="https://public.readdy.ai/ai/img_res/d6b914e0e15280fd8f701ffed027f3ab.jpg" class="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-110" alt="Tour Résidentielle">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="absolute bottom-0 p-6">
+<h3 class="text-xl font-bold text-white">Tour Horizon</h3>
+<p class="text-gray-200">Lyon, France</p>
+<span class="inline-block bg-primary/20 text-primary px-3 py-1 rounded-full text-sm mt-2">Tour</span>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-lg cursor-pointer" data-category="bureaux">
+<img src="https://public.readdy.ai/ai/img_res/e78496044002f489886ff8ffd7fe4d97.jpg" class="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-110" alt="Campus Écologique">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="absolute bottom-0 p-6">
+<h3 class="text-xl font-bold text-white">Campus Écologique</h3>
+<p class="text-gray-200">Bordeaux, France</p>
+<span class="inline-block bg-primary/20 text-primary px-3 py-1 rounded-full text-sm mt-2">Bureau</span>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-lg cursor-pointer" data-category="culturel">
+<img src="https://public.readdy.ai/ai/img_res/1bc26afafda1229273f853de63aa29c2.jpg" class="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-110" alt="Centre Culturel">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="absolute bottom-0 p-6">
+<h3 class="text-xl font-bold text-white">Centre Culturel Luminescence</h3>
+<p class="text-gray-200">Marseille, France</p>
+<span class="inline-block bg-primary/20 text-primary px-3 py-1 rounded-full text-sm mt-2">Centre Culturel</span>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-lg cursor-pointer" data-category="residentiel">
+<img src="https://public.readdy.ai/ai/img_res/08a664f318253b68b9e90054f9fd4b92.jpg" class="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-110" alt="Résidence de Luxe">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="absolute bottom-0 p-6">
+<h3 class="text-xl font-bold text-white">Résidence Les Jardins</h3>
+<p class="text-gray-200">Nice, France</p>
+<span class="inline-block bg-primary/20 text-primary px-3 py-1 rounded-full text-sm mt-2">Résidentiel</span>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-lg cursor-pointer" data-category="musees">
+<img src="https://public.readdy.ai/ai/img_res/f19780785ef76d92f07cf795bec299f8.jpg" class="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-110" alt="Musée des Sciences">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="absolute bottom-0 p-6">
+<h3 class="text-xl font-bold text-white">Musée des Sciences</h3>
+<p class="text-gray-200">Toulouse, France</p>
+<span class="inline-block bg-primary/20 text-primary px-3 py-1 rounded-full text-sm mt-2">Musée</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-8">
+<button id="load-more" class="bg-primary text-white px-8 py-3 !rounded-button hover:bg-primary/90">Charger plus</button>
+</div>
+</div>
+<div id="image-modal" class="modal">
+<div class="fixed inset-0 bg-black/90 flex items-center justify-center">
+<button class="absolute top-4 right-4 text-white hover:text-primary z-50" onclick="closeImageModal()">
+<i class="ri-close-line ri-2x"></i>
+</button>
+<button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-primary hidden">
+<i class="ri-arrow-left-line ri-2x"></i>
+</button>
+<button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-primary hidden">
+<i class="ri-arrow-right-line ri-2x"></i>
+</button>
+<img id="modal-image" src="" alt="" class="max-h-[90vh] max-w-[90vw] object-contain">
+</div>
+</div>
+<script>
+const projects = [
+{
+title: "Musée d'Art Contemporain",
+location: "Paris, France",
+category: "musees",
+description: "Un espace muséal innovant conçu pour accueillir les expositions d'art contemporain les plus ambitieuses.",
+specs: [
+"Surface: 15,000 m²",
+"Budget: 45M €",
+"Livraison: 2024",
+"Prix: Premier Prix Concours International"
+]
+},
+{
+title: "Tour Horizon",
+location: "Lyon, France",
+category: "tours",
+description: "Une tour résidentielle de luxe offrant une vue panoramique sur la ville.",
+specs: [
+"Hauteur: 180m",
+"45 étages",
+"200 appartements",
+"Certification HQE"
+]
+}
+];
+document.querySelectorAll('.filter-btn').forEach(button => {
+button.addEventListener('click', () => {
+const category = button.dataset.category;
+filterProjects(category);
+document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active', 'bg-primary'));
+button.classList.add('active', 'bg-primary');
+});
+});
+function filterProjects(category) {
+const items = document.querySelectorAll('#portfolio-grid > div');
+items.forEach(item => {
+if (category === 'tous' || item.dataset.category === category) {
+item.style.display = 'block';
+} else {
+item.style.display = 'none';
+}
+});
+}
+document.querySelectorAll('#portfolio-grid > div img').forEach((img, index) => {
+img.addEventListener('click', (e) => {
+e.stopPropagation();
+openImageModal(img.src, index);
+});
+});
+
+function openImageModal(imgSrc, currentIndex) {
+const modal = document.getElementById('image-modal');
+const modalImg = document.getElementById('modal-image');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const allImages = Array.from(document.querySelectorAll('#portfolio-grid > div img'));
+
+modalImg.src = imgSrc;
+modal.classList.add('active');
+
+if (allImages.length > 1) {
+prevBtn.classList.remove('hidden');
+nextBtn.classList.remove('hidden');
+
+prevBtn.onclick = () => {
+const prevIndex = currentIndex === 0 ? allImages.length - 1 : currentIndex - 1;
+modalImg.src = allImages[prevIndex].src;
+currentIndex = prevIndex;
+};
+
+nextBtn.onclick = () => {
+const nextIndex = currentIndex === allImages.length - 1 ? 0 : currentIndex + 1;
+modalImg.src = allImages[nextIndex].src;
+currentIndex = nextIndex;
+};
+}
+}
+
+function closeImageModal() {
+document.getElementById('image-modal').classList.remove('active');
+}
+
+document.getElementById('image-modal').addEventListener('click', (e) => {
+if (e.target === document.getElementById('image-modal')) {
+closeImageModal();
+}
+});
+function openModal(project) {
+document.getElementById('modal-title').textContent = project.title;
+document.getElementById('modal-location').textContent = project.location;
+document.getElementById('modal-category').textContent = project.category;
+document.getElementById('modal-description').textContent = project.description;
+const specsList = document.getElementById('modal-specs');
+specsList.innerHTML = project.specs.map(spec => `<li>${spec}</li>`).join('');
+document.getElementById('project-modal').classList.add('active');
+}
+function closeModal() {
+document.getElementById('project-modal').classList.remove('active');
+}
+document.getElementById('project-modal').addEventListener('click', (e) => {
+if (e.target === document.getElementById('project-modal')) {
+closeModal();
+}
+});
+</script>
+<footer class="bg-gray-900 border-t border-gray-800 mt-20">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div>
+<span class="text-2xl font-['Pacifico'] text-primary mb-4 block">logo</span>
+<p class="text-gray-400 mt-4">Spécialiste de la visualisation 3D architecturale, nous donnons vie à vos projets avec précision et créativité.</p>
+<div class="flex space-x-4 mt-6">
+<a href="#" class="text-gray-400 hover:text-primary">
+<div class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-700">
+<i class="ri-facebook-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-primary">
+<div class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-700">
+<i class="ri-twitter-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-primary">
+<div class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-700">
+<i class="ri-instagram-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-primary">
+<div class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-700">
+<i class="ri-linkedin-fill"></i>
+</div>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-white font-semibold mb-4">Services</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-primary">Visualisation 3D</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary">Animation Architecturale</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary">Réalité Virtuelle</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary">Plans 3D</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary">Modélisation BIM</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-white font-semibold mb-4">Liens Utiles</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-primary">À Propos</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary">Portfolio</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary">Blog</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary">Contact</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary">FAQ</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-white font-semibold mb-4">Contact</h3>
+<ul class="space-y-2">
+<li class="flex items-center text-gray-400">
+<i class="ri-map-pin-line mr-2"></i>
+123 Avenue des Champs-Élysées, 75008 Paris
+</li>
+<li class="flex items-center text-gray-400">
+<i class="ri-phone-line mr-2"></i>
++33 1 23 45 67 89
+</li>
+<li class="flex items-center text-gray-400">
+<i class="ri-mail-line mr-2"></i>
+contact@logo.com
+</li>
+<li class="flex items-center text-gray-400">
+<i class="ri-time-line mr-2"></i>
+Lun-Ven: 9h-18h
+</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-12 pt-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400">© 2025 logo. Tous droits réservés.</p>
+<div class="flex space-x-6 mt-4 md:mt-0">
+<a href="#" class="text-gray-400 hover:text-primary">Mentions Légales</a>
+<a href="#" class="text-gray-400 hover:text-primary">Politique de Confidentialité</a>
+<a href="#" class="text-gray-400 hover:text-primary">CGV</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>
